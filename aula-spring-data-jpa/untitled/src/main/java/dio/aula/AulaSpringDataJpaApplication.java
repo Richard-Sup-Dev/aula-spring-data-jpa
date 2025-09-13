@@ -17,16 +17,18 @@ public class AulaSpringDataJpaApplication {
     @Bean
     public CommandLineRunner run(UserRepository repository) {
         return args -> {
-
+            // A MÁGICA DO JPA ACONTECE AQUI
             User user = new User();
             user.setName("Richard");
             user.setUsername("Richard");
             user.setPassword("Rin123");
 
+            // O método save() é chamado do repositório
             repository.save(user);
 
             System.out.println("Usuário salvo com sucesso!");
 
+            // O findAll() também existe e funciona
             for (User u : repository.findAll()) {
                 System.out.println(u.getName());
             }
